@@ -4,16 +4,28 @@ function solveRect(l, b) {
 
     console.log(`Solving for rectangle with l = ${l} , and b = ${b}`);
 
-    if (l <= 0 || b <= 0) {
+    rect(l, b, (err, rectangle) => {
+        if (err) {
 
-        console.log(`Rectangle dimension should be grater then 0: l = ${l}, and b = ${b} `);
+            console.log("ERROR: ", err.message);
 
-    } else {
+        } else {
 
-        console.log(`The area of rectangle is ${rect.area(l, b)}`);
-        console.log(`The perimeter of rectangle is ${rect.perimeter(l, b)}`);
+            console.log(
+                `The area of the rectangle of 
+                dimensions l = ${l} , and b = ${b}
+                is ${rectangle.area()}`
+            );
 
-    }
+            console.log(
+                `The perimeter of the rectangle of 
+                dimensions l = ${l} , and b = ${b}
+                is ${rectangle.perimeter()}`
+            );
+        }
+    });
+    
+    console.log(`This statement is after the call of rect`);
 }
 
 solveRect(2, 4);
